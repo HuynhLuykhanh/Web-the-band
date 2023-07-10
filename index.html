@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>The band</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link
       rel="stylesheet"
@@ -119,10 +119,50 @@
                   />
                   <div class="place-body">
                     <h3 class="place-heading">New York</h3>
-                    <p class="place-time"></p>
-                    <p class="place-dsc"></p>
+                    <p class="place-time">Fri 27 Nov 2016</p>
+                    <p class="place-dsc">
+                      Praesent tincidunt sed tellus ut rutrum sed vitae justo.
+                    </p>
+                    <button class="btn s-full-width js-buy-ticket">
+                      Buy Tickets
+                    </button>
                   </div>
                 </div>
+                <div class="place-item">
+                  <img
+                    src="./assets/img/places/place2.jpg"
+                    alt="New York"
+                    class="place-img"
+                  />
+                  <div class="place-body">
+                    <h3 class="place-heading">Paris</h3>
+                    <p class="place-time">Sat 28 Nov 2016</p>
+                    <p class="place-dsc">
+                      Praesent tincidunt sed tellus ut rutrum sed vitae justo.
+                    </p>
+                    <button class="btn s-full-width js-buy-ticket">
+                      Buy Tickets
+                    </button>
+                  </div>
+                </div>
+                <div class="place-item">
+                  <img
+                    src="./assets/img/places/place3.jpg"
+                    alt="New York"
+                    class="place-img"
+                  />
+                  <div class="place-body">
+                    <h3 class="place-heading">San Francisco</h3>
+                    <p class="place-time">Sun 29 Nov 2016</p>
+                    <p class="place-dsc">
+                      Praesent tincidunt sed tellus ut rutrum sed vitae justo.
+                    </p>
+                    <button class="btn s-full-width js-buy-ticket">
+                      Buy Tickets
+                    </button>
+                  </div>
+                </div>
+                <div class="clear"></div>
               </div>
             </div>
           </div>
@@ -134,6 +174,69 @@
         </div>
       </div>
       <div id="footer"></div>
+      <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+          <div class="modal-close js-modal-close">
+            <i class="ti-close"> </i>
+          </div>
+          <header class="modal-header">
+            <i class="modal-heading-icon ti-bag"></i>
+            Tickets
+          </header>
+          <div class="modal-body">
+            <label for="ticket-quatity" class="modal-label">
+              <i class="ti-shopping-cart"></i>
+              Tickets, $15 per person
+            </label>
+            <input
+              id="ticket-quatity"
+              type="text"
+              class="modal-input"
+              placeholder="How many?"
+            />
+            <label for="ticket-email" class="modal-label">
+              <i class="ti-user"></i>
+              Send To
+            </label>
+            <input
+              id="ticket-email"
+              type="email"
+              class="modal-input"
+              placeholder="Enter email...?"
+            />
+            <button id="buy-tickets">Pay <i class="ti-check"></i></button>
+          </div>
+          <footer class="modal-footer">
+            <p class="modal-help">Need <a href="">help?</a></p>
+          </footer>
+        </div>
+      </div>
     </div>
+    <script>
+      const buyBtns = document.querySelectorAll(".js-buy-ticket");
+      const modal = document.querySelector(".js-modal");
+      const modalContainer = document.querySelector(".js-modal-container");
+      const modalClose = document.querySelector(".js-modal-close");
+      // Hàm hiển thị modal mua vé(thêm class open vào modal)
+      function showBuyTickets() {
+        modal.classList.add("open");
+      }
+      // Hàm ẩn modal mua vé(gỡ bỏ class open vào modal)
+      function hideshowBuyTickets() {
+        modal.classList.remove("open");
+      }
+      // Lặp qua từng thẻ button và nghe hành vi click
+      for (const buyBtn of buyBtns) {
+        buyBtn.addEventListener("click", showBuyTickets);
+      }
+      // Nghe hành vi click vào button close
+      modalClose.addEventListener("click", hideshowBuyTickets);
+
+      modal.addEventListener("click", hideshowBuyTickets);
+
+      modalContainer.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    </script>
   </body>
 </html>
